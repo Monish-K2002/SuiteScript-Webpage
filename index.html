@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>SuiteScript</title>
+        <script>
+            function load(file,elementId){
+                fetch(file)
+                    .then(response => response.text())
+                    .then(data => document.getElementById(elementId).innerHTML=data)
+            }
+            document.addEventListener('DOMContentLoaded', () => {
+                load('main.html', 'test');
+                load('navigation.html','navigation')
+            });
+        </script>
+    </head>
+    <body>
+        <div id="navigation"></div>
+       <div id="test"></div>
+    </body>
+</html>
