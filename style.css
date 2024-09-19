@@ -6,6 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
+    background-color: white4;
 }
 
 nav {
@@ -18,6 +19,7 @@ nav {
 
 .nav-links {
     list-style: none;
+    margin-left: auto; /* Pushes the list to the right */
 }
 
 .nav-links li {
@@ -31,12 +33,3 @@ nav {
     font-size: 18px;
 }
 
-.logo a {
-    color: white;
-    text-decoration: none;
-    font-size: 24px;
-}
-
-.burger {
-    display: none;
-}
