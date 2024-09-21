@@ -1,0 +1,82 @@
+<div>
+    <p style="font-size: 20px;">Here you can find snippets for frequently used functions:</p><br>
+<button type="button" class="collapsible">Environment Checker</button>
+<div class="content">
+This function is used to check the environment of the system and return the hard coded value based on the environment.
+<div class="code-box">
+<pre class="codeSnippet">
+<code>
+const getGlobalDeclaration = (() => {
+    let result;  // Variable to store the result
+    return () => {
+        if (result) {
+            return result;  // Return cached result if it exists
+        }
+        var environmentType = runtime.envType;
+        let PROD = {
+            "ENV": "PROD"
+        };
+        let SB = {
+            "ENV": "SB"
+        };
+        result = environmentType=='PRODUCTION' ? PROD : SB; 
+            // Compute and cache result
+        return result
+    };
+})();
+</code>
+</pre>
+<button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+</div>
+</div>
+<button type="button" class="collapsible">Get Search Data</button>
+<div class="content">
+This function is used to retrieve the search data.
+<div class="code-box">
+<pre class="codeSnippet">
+<code>
+const getSearchData = (searchId, filters) => {
+    let searchData = search.load(searchId);
+    let finalResult = [];
+    if(filters.length>0){
+        let defaultFilters = searchData.filters;
+        defaultFilters.push(...filters);
+        searchData.filters = defaultFilters;
+    }
+    let count = searchData.runPaged().count;
+    let start = 0;
+    let end = 1000;
+    do{
+        let result = searchData.run().getRange(start,end);
+        result.forEach(data => finalResult.push(data));
+        start +=1000;
+        end += 1000;
+    }
+    while(start < count);
+    return finalResult;
+};
+</code>
+</pre>
+<button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+</div>
+</div>
+<button type="button" class="collapsible">Check Null Values</button>
+<div class="content">
+This function is used to check the null values mostly used along with CSV and Excel Values.
+<div class="code-box">
+<pre class="codeSnippet">
+<code>
+const checkNull = (value) => {
+    if(value == '' || value == ' ' || value == null || value == undefined){
+        return '';
+    }
+    else{
+        return value;
+    }
+}
+</code>
+</pre>
+<button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+</div>
+</div>
+</div>

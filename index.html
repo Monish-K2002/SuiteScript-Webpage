@@ -6,19 +6,68 @@
         <link rel="stylesheet" href="style.css">
         <title>SuiteScript</title>
         <script>
-            function load(file,elementId){
+            function load(file, elementId) {
                 fetch(file)
                     .then(response => response.text())
-                    .then(data => document.getElementById(elementId).innerHTML=data)
+                    .then(data => {
+                        document.getElementById(elementId).innerHTML = data;
+
+                        // Check if the loaded content includes collapsible elements
+                        setupCollapsible();
+                    })
+                    .catch(error => console.error('Error loading file:', error));
             }
+
+            function changeBody(file) {
+                load(file, 'home');
+            }
+
+            function setupCollapsible() {
+                const collapsibleButtons = document.querySelectorAll('.collapsible');
+
+                collapsibleButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        button.classList.toggle('active');
+
+                        const content = button.nextElementSibling; // Get the associated content div
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null; // Collapse the content
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px"; // Expand the content
+                        }
+                    });
+                });
+            }
+            function copyToClipboard(button) {
+                const codeBox = button.parentElement
+                const codeSnippet = codeBox.querySelector(".codeSnippet").innerText;
+                navigator.clipboard.writeText(codeSnippet).then(() => {
+                    button.innerHTML = 'Copied!';
+                    setTimeout(()=>{
+                        copyButton.innerHTML='Copy';
+                    },5000)
+                    set
+                }).catch(err => {
+                    console.error("Error copying text: ", err);
+                });
+            }
+
             document.addEventListener('DOMContentLoaded', () => {
                 load('main.html', 'home');
-                load('navigation.html','navigation')
+                load('navigation.html', 'navigation');
             });
+
+
+
         </script>
     </head>
     <body>
-        <div id="navigation"></div>
-       <div id="home"></div>
+        <header>
+            <div id="navigation"></div>
+        </header>
+        <main>
+            <div id="home"></div>
+        </main>
+       
     </body>
 </html>

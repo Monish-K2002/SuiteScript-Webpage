@@ -6,7 +6,18 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: white4;
+    background-color: #4a4a4a;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+    color: white;
+}
+
+header {
+    max-width: auto;
+    margin: auto;
 }
 
 nav {
@@ -14,7 +25,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #333;
+    background-color: #4a4a4a;  
 }
 
 .nav-links {
@@ -25,6 +36,10 @@ nav {
 .nav-links li {
     display: inline-block;
     padding: 0 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
 }
 
 .nav-links a {
@@ -33,3 +48,80 @@ nav {
     font-size: 18px;
 }
 
+.collapsible {
+    background-color: #4a4a4a;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 25px;
+    font-weight: bold;
+    position: relative;
+     cursor: pointer; 
+}
+
+.collapsible::after {
+    content: "▼"; /* Unicode character for down arrow */
+    font-size: 12px; /* Adjust size as needed */
+    margin-left: 8px; /* Space between text and arrow */
+    transition: transform 0.3s ease; /* Optional: transition for animation */
+}
+
+/* Optional: Change arrow direction on active state */
+.collapsible.active::after {
+    transform: rotate(180deg); /* Rotate arrow when active */
+}
+
+.active, .collapsible:hover {
+    background-color: #000000;
+}
+
+.content {
+    padding: 0 18px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    
+}   
+
+.code-box {
+    position: relative; /* For positioning the copy button */
+    background-color: #282c34; /* Dark background */
+    color: #ffffff;           /* White text */
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    overflow: auto;           /* Adds scrollbars if content overflows */
+    font-family: "Courier New", Courier, monospace; /* Monospace font for code */
+    line-height: 1.5;         /* Improved line spacing */
+    white-space: pre;         /* Preserve whitespace */
+}
+
+pre {
+    margin: 0;               /* Remove margin from <pre> */
+}
+pre, code {
+    white-space: pre;
+}
+.copy-button {
+    position: absolute;      /* Position the button absolutely */
+    top: 15px;               /* Adjust top position */
+    right: 15px;             /* Adjust right position */
+    background-color: #0084ff;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.copy-button:hover {
+    background-color: #21a1f1; /* Darker shade on hover */
+}
