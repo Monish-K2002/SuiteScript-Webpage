@@ -44,9 +44,8 @@
                 navigator.clipboard.writeText(codeSnippet).then(() => {
                     button.innerHTML = 'Copied!';
                     setTimeout(()=>{
-                        copyButton.innerHTML='Copy';
-                    },5000)
-                    set
+                        button.innerHTML='Copy';
+                    },3000)
                 }).catch(err => {
                     console.error("Error copying text: ", err);
                 });
